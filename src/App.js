@@ -1,30 +1,44 @@
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import "./pages/Video";
 import Video from "./pages/Video";
+import db from "./config/firebase";
+import { collection, getDocs } from "firebase/firestore/lite";
 
 function App() {
+    const [video, setVideos] = useState([]);
+
+    //conexão com a colecao do firebase ->'videos'
+    //async para esperar os documentos com await
+    async function getVideos() {
+        const videosCollection = collection(db, "videos");
+        const videosSnapshot = await getDocs(videosCollection);
+        //mapeamento dos videos (para permitir pegar um por um)
+        const videosList = videosSnapshot.docs.map((doc) => doc.data());
+        setVideos(videosList);
+    }
+
+    //sempre que iniciar ou atualizar
+    useEffect(() => {
+        getVideos();
+    }, []);
+
     return (
         <div className="App">
             <div className="app_videos">
-                <Video
-                    likes={111}
-                    messages={222}
-                    shares={333}
-                    name="Paulo"
-                    description="Brecker o goleiro"
-                    music="musica épica"
-                    url="https://poqlymuephttfsljdabn.supabase.co/storage/v1/object/public/jornadadev/brecker2.mp4?t=2023-05-22T19%3A37%3A45.885Z"
-                ></Video>
-                <Video
-                    likes={444}
-                    messages={555}
-                    shares={666}
-                    name="Pedro"
-                    description="Bird olhando pra camera"
-                    music="Clap your hands"
-                    url="
-                    https://poqlymuephttfsljdabn.supabase.co/storage/v1/object/public/jornadadev/bird.mp4?t=2023-05-22T19%3A40%3A47.052Z"
-                ></Video>
+                {video.map((item) => {
+                    return (
+                        <Video
+                            likes={item.likes}
+                            messages={item.messages}
+                            shares={item.shares}
+                            name={item.name}
+                            description={item.description}
+                            music={item.music}
+                            url={item.url}
+                        ></Video>
+                    );
+                })}
             </div>
         </div>
     );
