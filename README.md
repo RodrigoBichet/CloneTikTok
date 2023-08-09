@@ -1,3 +1,38 @@
+# Projeto Clone TikTok
+
+<img src="./assets/projetogif.gif" alt="Demonstração do projeto sendo executado.">
+
+## 💻 Sobre o projeto
+
+> Projeto realizado através das aulas forneciadas pela plataforma EBAC, com intuito de me aprofundar nas funcionalidades do Javascript e a utilização do React vinculando o projeto no Firebase para o manuseio do Banco de Dados.
+
+<hr>
+
+## 🧪 Tecnologias
+
+-   HTML
+-   CSS
+-   Javascript
+-   React
+
+## 🚀 Como utilizar
+
+O projeto foi realizado através da ide Visual Studio Code e o Banco de Dados pelo Firebase. 
+
+Para que o projeto seja compilado é necessário a instalação do React, que está declarada no final deste Readme.
+
+
+## Autor
+
+<strong> Rodrigo Bichet </strong>
+<br>
+
+<a href="https://www.linkedin.com/in/rodrigobichet/" target="_blank"><img src="https://img.shields.io/badge/Linkedin-blue?style=for-the-badge&logo=Linkedin"></a>
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
